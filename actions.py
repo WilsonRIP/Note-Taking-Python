@@ -55,6 +55,11 @@ def create_actions(main_window):
     actions['paste'].setShortcut(QKeySequence.StandardKey.Paste)
     actions['paste'].setStatusTip("Paste the text from the clipboard")
     actions['paste'].triggered.connect(main_window.paste)
+    
+    actions['select_all'] = QAction(QIcon.fromTheme("edit-select-all"), "Select All", main_window)
+    actions['select_all'].setShortcut(QKeySequence.StandardKey.SelectAll)
+    actions['select_all'].setStatusTip("Select all text")
+    actions['select_all'].triggered.connect(main_window.select_all)
 
     # View actions
     actions['zoom_in'] = QAction(QIcon.fromTheme("zoom-in"), "Zoom In", main_window)
@@ -66,10 +71,57 @@ def create_actions(main_window):
     actions['zoom_out'].setShortcut(QKeySequence.StandardKey.ZoomOut)
     actions['zoom_out'].setStatusTip("Zoom out")
     actions['zoom_out'].triggered.connect(main_window.zoom_out)
-    
+
     # Format actions
     actions['set_font'] = QAction("Set Font", main_window)
     actions['set_font'].setStatusTip("Set the font for the editor")
     actions['set_font'].triggered.connect(main_window.set_font)
+
+    actions['set_color'] = QAction("Set Text Color", main_window)
+    actions['set_color'].setStatusTip("Set the text color")
+    actions['set_color'].triggered.connect(main_window.set_text_color)
+
+    actions['bold'] = QAction(QIcon.fromTheme("format-text-bold"), "Bold", main_window)
+    actions['bold'].setShortcut(QKeySequence.StandardKey.Bold)
+    actions['bold'].setStatusTip("Toggle bold")
+    actions['bold'].triggered.connect(main_window.toggle_bold)
+
+    actions['underline'] = QAction(QIcon.fromTheme("format-text-underline"), "Underline", main_window)
+    actions['underline'].setShortcut(QKeySequence.StandardKey.Underline)
+    actions['underline'].setStatusTip("Toggle underline")
+    actions['underline'].triggered.connect(main_window.toggle_underline)
+
+    actions['strikethrough'] = QAction(QIcon.fromTheme("format-text-strikethrough"), "Strikethrough", main_window)
+    actions['strikethrough'].setShortcut(QKeySequence.fromString("Ctrl+Shift+S"))  # No standard shortcut
+    actions['strikethrough'].setStatusTip("Toggle strikethrough")
+    actions['strikethrough'].triggered.connect(main_window.toggle_strikethrough)
+
+    # Find and Replace
+    actions['find_replace'] = QAction(QIcon.fromTheme("edit-find-replace"), "Find and Replace", main_window)
+    actions['find_replace'].setShortcut(QKeySequence.StandardKey.Find)  # Ctrl+F
+    actions['find_replace'].setStatusTip("Find and replace text")
+    actions['find_replace'].triggered.connect(main_window.find_and_replace)
+
+    # Go to Line
+    actions['go_to_line'] = QAction("Go to Line", main_window)
+    actions['go_to_line'].setShortcut(QKeySequence.fromString("Ctrl+G"))
+    actions['go_to_line'].setStatusTip("Go to a specific line")
+    actions['go_to_line'].triggered.connect(main_window.go_to_line)
+
+    # Insert Date and Time
+    actions['insert_date_time'] = QAction("Insert Date and Time", main_window)
+    actions['insert_date_time'].setShortcut(QKeySequence.fromString("Ctrl+Shift+D"))
+    actions['insert_date_time'].setStatusTip("Insert the current date and time")
+    actions['insert_date_time'].triggered.connect(main_window.insert_date_time)
+    
+    # Clear all text
+    actions['clear_all'] = QAction("Clear All", main_window)
+    actions['clear_all'].setStatusTip("Clear all text")
+    actions['clear_all'].triggered.connect(main_window.clear_all_text)
+
+    # Help action
+    actions['help'] = QAction(QIcon.fromTheme("help-contents"), "Help", main_window)
+    actions['help'].setStatusTip("Show keyboard shortcuts")
+    actions['help'].triggered.connect(main_window.show_help)
 
     return actions 

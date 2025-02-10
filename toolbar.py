@@ -19,5 +19,11 @@ def create_toolbar(main_window, actions):
     toolbar.addAction(actions['zoom_out'])
     toolbar.addSeparator()
     toolbar.addAction(actions['set_font'])
+    toolbar.addSeparator()
+    toolbar.addAction(actions['bold'])
+    toolbar.addAction(actions['underline'])
+    toolbar.addAction(actions['strikethrough'])
+    toolbar.addSeparator()
+    toolbar.addAction(actions['find_replace'])
 
     return toolbar 
